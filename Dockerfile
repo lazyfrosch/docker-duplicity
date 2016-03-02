@@ -6,6 +6,8 @@ RUN apt-get update \
 
 COPY pg_dump /etc/cron.d/
 
+VOLUME [ "/root/.cache/duplicity" ]
+
 COPY docker-entrypoint.sh /
 COPY docker-entrypoint.d /docker-entrypoint.d
 ENTRYPOINT [ "/docker-entrypoint.sh", "cron" ]
