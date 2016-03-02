@@ -1,0 +1,1 @@
+0 2 * * * root pg_dumpall -h database -U postgres -g > /var/backups/globals.sql && pg_dump -h database -U postgres -Fc ${DATABASE} > /var/backups/${DATABASE}.custom ; duplicity --progress /var/backups/ swift://backups_postgresql
