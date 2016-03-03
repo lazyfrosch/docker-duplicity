@@ -1,14 +1,12 @@
-FROM postgres:9.5
+FROM debian:stretch
 
 RUN apt-get update \
-  && apt-get install -y cron duplicity python-swiftclient \
+  && apt-get install -y duplicity python-swiftclient postgresql-client \
   && rm -rf /var/apt/lists/*
-
-COPY pg_dump /etc/cron.d/
 
 VOLUME [ "/root/.cache/duplicity" ]
 
 COPY docker-entrypoint.sh /
 COPY docker-entrypoint.d /docker-entrypoint.d
-ENTRYPOINT [ "/docker-entrypoint.sh", "cron" ]
-CMD [ "-f" ]
+ENTRYPOINT [ "/docker-entrypoint.sh", "duplicity" ]
+CMD [ "--help" ]
