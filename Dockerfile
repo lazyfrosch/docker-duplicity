@@ -2,9 +2,9 @@ FROM debian:jessie-backports
 
 RUN apt-get update \
   && apt-get install -y -t jessie-backports duplicity python-setuptools \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  && apt-get install -y \
     python-swiftclient \
-    mysql-client postgresql-client slapd \
+    mysql-client postgresql-client ldap-utils \
   && rm -rf /var/apt/lists/*
 
 VOLUME [ "/root/.cache/duplicity" ]
