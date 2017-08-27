@@ -1,4 +1,5 @@
 
+default: build
 all: build push
 
 build:
