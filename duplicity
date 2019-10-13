@@ -1,7 +1,0 @@
-#! /usr/bin/python
-
-import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
-
-import imp
-imp.load_source('__main__', '/usr/bin/duplicity')
