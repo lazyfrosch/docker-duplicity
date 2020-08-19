@@ -16,7 +16,7 @@ if [ -n "$2" ]; then
 fi
 
 duplicity() {
-  docker run -it --rm \
+  docker run -i --rm \
     -h "${HOSTNAME}" \
     -v "${VOLUME}:/backup" \
     -e "PASSPHRASE=${PASSPHRASE}" \
