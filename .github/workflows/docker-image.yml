@@ -20,5 +20,17 @@ jobs:
     - name: Test with volume
       run: ./test.sh
 
-    #- name: Test with SSH
-    #  run: ./test-ssh.sh
+    - name: Test with SSH
+      env:
+        SSH_SERVER: ${{ secrets.SSH_SERVER }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir .ssh
+        echo "${SSH_KNOWN_HOSTS}" >.ssh/known_hosts
+        echo "${SSH_PRIVATE_KEY}" >.ssh/id_rsa
+        chmod -R go= .ssh
+
+        ./test-ssh.sh
