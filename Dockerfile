@@ -13,7 +13,5 @@ RUN apk add -U python3 py3-pip $UTILITY $DEPS $DEPS_BUILD \
 	&& pip3 list \
 	&& rm -f /var/cache/apk/*
 
-COPY duplicity.sh /usr/local/bin/duplicity
-
 ENTRYPOINT [ "duplicity" ]
 CMD [ "--help" ]
