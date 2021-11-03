@@ -1,7 +1,7 @@
 FROM alpine
 
-ENV DUPLICITY_VERSION=0.8.18 \
-	PARAMIKO_VERSION=2.7.2 \
+ENV DUPLICITY_VERSION=0.8.20 \
+	PARAMIKO_VERSION=2.8.0 \
 	UTILITY="gnupg curl openssh-client librsync libffi" \
 	DEPS="py3-cryptography py3-pynacl py3-cffi py3-bcrypt" \
 	DEPS_BUILD="gcc libffi-dev libc-dev python3-dev librsync-dev gettext"
