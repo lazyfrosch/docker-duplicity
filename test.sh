@@ -2,7 +2,8 @@
 
 set -e
 
-IMAGE=lazyfrosch/duplicity
+: "${IMAGE:=lazyfrosch/duplicity}"
+
 VOLUME=duplicity_test
 HOSTNAME=duplicity-test
 TARGET=file:///backup
@@ -16,7 +17,7 @@ if [ -n "$2" ]; then
 fi
 
 duplicity() {
-  docker run -i --rm \
+  docker run -i --rm --pull=never \
     -h "${HOSTNAME}" \
     -v "${VOLUME}:/backup" \
     -e "PASSPHRASE=${PASSPHRASE}" \

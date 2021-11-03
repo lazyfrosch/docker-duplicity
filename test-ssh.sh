@@ -2,7 +2,8 @@
 
 set -e
 
-IMAGE=lazyfrosch/duplicity
+: "${IMAGE:=lazyfrosch/duplicity}"
+
 HOSTNAME=duplicity-test
 SSH_CONFIG="$(pwd)/.ssh"
 

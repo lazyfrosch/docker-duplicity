@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: duplicity
+  IMAGE_NAME: lazyfrosch/duplicity
   DOCKERHUB_ACCOUNT: lazyfrosch
   DOCKER_BUILDKIT: 1
 
@@ -68,7 +68,7 @@ jobs:
 
           for image in \
             "ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME" \
-            "${{ env.DOCKERHUB_ACCOUNT }}/$IMAGE_NAME"
+            "docker.io/${{ env.DOCKERHUB_ACCOUNT }}/$IMAGE_NAME"
           do
             docker tag $IMAGE_NAME $image:$VERSION
             docker push $image:$VERSION
