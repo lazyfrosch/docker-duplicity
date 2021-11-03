@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: lazyfrosch/duplicity
+  IMAGE_NAME: duplicity
   DOCKERHUB_ACCOUNT: lazyfrosch
   DOCKER_BUILDKIT: 1
 
@@ -31,7 +31,7 @@ jobs:
             --label="org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}"
 
       - name: Test with volume
-        run: ./test.sh
+        run: IMAGE=${IMAGE_NAME} ./test.sh
 
       - name: Test with SSH
         env:
@@ -46,7 +46,7 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" >.ssh/id_rsa
           chmod -R go= .ssh
 
-          ./test-ssh.sh
+          IMAGE=${IMAGE_NAME} ./test-ssh.sh
 
       - name: Log in to registries
         if: github.ref == 'refs/heads/master'
